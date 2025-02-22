@@ -1,0 +1,45 @@
+classDiagram
+direction LR
+    class Clinica {
+	    - Mascota mascotas[]
+	    - Dueno dueños []
+	    - Cita citas[]
+	    + registrarCitas()
+	    + registrarDueños()
+	    + atiendeMascotas()
+	    + actualizaEstadosCita()
+    }
+
+    class Cita {
+	    - string mascota_atendida
+	    - string dueño_mascota
+	    - date fecha_cita
+	    - string hora_cita
+	    - boolean estado_cita
+    }
+
+    class Dueno {
+	    - string id
+	    - date fecha_registro
+	    - Mascota mascotas [ ]
+	    + paseaMascota()
+	    + pideCita()
+	    + llevaMascotaCita()
+    }
+
+    class Mascota {
+	    - string nombre
+	    - date fecha_nacimiento
+	    - string especie
+	    + camina()
+	    + come()
+	    + duerme()
+    }
+
+    Cita --o Clinica
+    Dueno --o Clinica
+    Mascota --o Clinica
+    Mascota --o Dueno
+    Cita --> Mascota
+    Cita --> Dueno
+
