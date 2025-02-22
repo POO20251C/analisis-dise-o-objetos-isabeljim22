@@ -1,38 +1,38 @@
 classDiagram
 direction RL
+    class Hotel {
+	    - Habitacion habitaciones [ ]
+	    - Huesped huespedes [ ]
+	    - Reserva reservas [ ]
+	    + regitraHuespedes()
+	    + gestionaReservas()
+	    + actualizaEstadosReservas()
+    }
+
     class Huesped {
-	    - id
-	    - fecha_registro
+	    - string id
+	    - date fecha_registro
 	    + haceReservas()
 	    + cancelaReservas()
 	    + checkout()
     }
 
     class Reserva {
-	    - habitacion_reservada
-	    - huesped_asignado
-	    - fecha_inicio
-	    - fecha_fin
-	    - estado_reserva
+	    - int habitacion_reservada
+	    - string huesped_asignado
+	    - date fecha_inicio
+	    - date fecha_fin
+	    - boolean estado_reserva
     }
 
     class Habitacion {
-	    - numero
-	    - tipo
-	    - tarifa_noche
-    }
-
-    class Hotel {
-	    - Habitacion: habitaciones [ ]
-	    - Huesped: huespedes [ ]
-	    - Reserva: reservas [ ]
-	    + regitraHuespedes()
-	    + gestionaReservas()
-	    + actualizaEstadosReservas()
+	    - int numero
+	    - string tipo
+	    - float tarifa_noche
     }
 
     Reserva --o Hotel
     Huesped --o Hotel
     Habitacion --o Hotel
-    Huesped --> Reserva
-
+    Reserva --> Habitacion
+    Reserva --> Huesped

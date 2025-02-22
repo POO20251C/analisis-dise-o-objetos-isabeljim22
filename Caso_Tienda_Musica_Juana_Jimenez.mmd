@@ -1,0 +1,39 @@
+classDiagram
+direction RL
+    class Album {
+	    - string titulo
+	    - string id
+	    - date fecha_lanzamiento
+	    + suena()
+    }
+
+    class Cliente {
+	    - string id
+	    - date fecha_registro
+	    + compraAlbumes()
+	    + escuchaAlbumes()
+    }
+
+    class Compra {
+	    - string album_comprado
+	    - string cliente_compra
+	    - date fecha_compra
+	    - boolean estado_compra
+    }
+
+    class Tienda {
+	    - Album catalogo []
+	    - Compra compras []
+	    - Cliente clientes []
+	    + registraAlbumes()
+	    + regstrarClientes()
+	    + registrarCompras()
+	    + actualzaEstadoCompra()
+    }
+
+    Album --o Tienda
+    Cliente --o Tienda
+    Compra --o Tienda
+    Compra --> Cliente
+    Compra --> Album
+
